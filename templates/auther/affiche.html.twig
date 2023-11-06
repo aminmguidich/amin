@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des auteurs</title>
+</head>
+<body>
+    <h1>Liste des auteurs</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Delete</th>
+                 <th>Modifier</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in authers %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.email }}</td>
+                    <td><a href="{{path('suppA',{'i':i.id})}}">
+      supprimer </td>
+      <td><a href="{{ path('update', {'id': id.id}) }}">Modify</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Le nombre total d'auteurs est {{ authers|length }}</h2>
+</body>
+</html>

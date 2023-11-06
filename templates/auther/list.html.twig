@@ -1,0 +1,34 @@
+{# calcul somme de livre #}
+{% set S=0 %}
+{% for k in auther%}
+{% set S=S+k.nb_books %}
+{% endfor %}
+
+<h1>La liste des auteurs </h1>
+<table border="3"> 
+    <tr> 
+        <th> ID</th>
+        <th>User Name</th>
+        <th>Nombrebooks</th>
+        <th>Image</th>
+        <th>detailA</th>
+
+    </tr>
+{% for i in auther %}
+<tr>
+    <td>{{i.id}}</td>
+    <td>{{i.username | upper }}</td>
+    <td>{{i.nb_books}}</td>
+    <td><img src="{{ asset (i.picture)}}" /</td>
+    <td><from action="{{path('detailA',{'i':i.id,'nbb':i.nb_books})}}">
+    <button>DETAIL</button></from>
+    <!-- ou bien aussi autre methode-->
+    <a href="{{path('detailA',{'i':i.id,'nbB':i.nb_books})}}">
+      Detail 
+    </td>
+</tr> 
+{% endfor %}
+</table>
+
+<h2> Le nombre des auteurs est {{auther | length}}</h2>
+<h2> Le nombre des livres est {{S}}</h2>
